@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>基于神经网络的意图识别</title>
+    <style>
+        .nav {
+            background: #3a3a3a;
+            height: 65px;
+            overflow: hidden;
+
+        }
+
+        h1 {
+            color: white;
+        }
+        h3{
+            margin-left: 100px;
+        }
+        table{
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<nav>
+    <ul class="nav">
+        <h1>基于神经网络的意图识别</h1>
+    </ul>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table class="table1">
+            <tbody>
+            <tr>
+                <td>请输入：</td>
+                <td><input type="text" name="sentence"></td>
+            </tr>
+            <tr>
+                <td>您输入的句子是:</td>
+                <td>{{ inputt }}</td>
+
+            </tr>
+            <tr>
+                <td>分类的结果是:</td>
+                <td>{{ result }}</td>
+            </tr>
+            <tr>
+                <td><input type="submit" value="执行"></td>
+            </tr>
+            </tbody>
+        </table>
+    </form>
+
+    <h3>历史记录</h3>
+    <table>
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Input sentence</th>
+            <th>Predict label</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for row in rows %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ row.1 }}</td>
+                <td>{{ row.2 }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <h5> 输入样例: 宫保鸡丁的做法 / 你在哪？</h5>
+
+
+</nav>
+</body>
+</html>
