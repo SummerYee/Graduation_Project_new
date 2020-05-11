@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Author  : 王小易 / SummerYee
 # @Time    : 2020/3/20 23:25
-# @File    : 20-graduation-project test.py
+# @File    : mian.py
 # @Software: PyCharm
 
 import pickle
@@ -37,12 +37,8 @@ def query_label(query_sentence):
     return label: "bus"
     '''
     x_input = []
-    # 分词 ['从', '中山', '到', '西安', '的', '汽车', '。']
     # query_sentence_list = list(jieba.cut(query_sentence))
-    # 序列化 [54, 717, 0, 8, 0, 0, 1, 0, 183, 2]
     x = [word_index_dict.get(w, 0) for w in query_sentence]
-    # 填充  array([[  0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,   0,
-    #      0,   0,   0,  54, 717,   0,   8,   0,   0,   1,   0, 183,   2]], dtype=int32)
     x_input.append(x)
     x_input = pad_sequences(x_input, maxlen=max_cut_query_lenth)
     # 预测

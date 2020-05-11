@@ -1,6 +1,14 @@
+# -*- coding: utf-8 -*-
+# @Author  : 王小易 / SummerYee
+# @Time    : 2020/4/21 15:00
+# @File    : diaoyong.py
+# @Software: PyCharm
+
 from main import query_label
 import time
 import MySQLdb
+
+
 conn= MySQLdb.connect(
         host='localhost',
         port = 3306,
