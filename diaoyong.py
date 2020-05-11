@@ -18,22 +18,23 @@ conn= MySQLdb.connect(
         )
 cur = conn.cursor()
 cur.execute('drop table grad_db')
-char="""CREATE TABLE grad_db (
-id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-sentence VARCHAR ( 255 ) NOT NULL,
-result VARCHAR ( 255 ) NOT NULL);
- """
+char = """
+    CREATE TABLE grad_db (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    sentence VARCHAR ( 255 ) NOT NULL,
+    result VARCHAR ( 255 ) NOT NULL);
+     """
 cur.execute(char)
-a='0'
+a = '0'
 while True:
     time.sleep(1)
-    f=open('linshi.txt',encoding='utf-8')
-    b=f.read()
+    f = open('linshi.txt',encoding='utf-8')
+    b = f.read()
     f.close()
     if a != b:
         # print('执行替换')
-        result=query_label(b)
-        a=b
+        result = query_label(b)
+        a = b
         f2 = open('linshi2.txt', 'w',encoding='utf-8')
         f2.write(result)
         f2.close()
